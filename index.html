@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Necesitamos un equipo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Orbitron', sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #0a0a1a; /* Mantenemos el fondo oscuro sólido */
+            color: #e1e1ff;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .btn {
+            background-color: transparent;
+            color: #00eeff;
+            border: 2px solid #00eeff;
+            padding: 16px 32px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 238, 255, 0.4); /* Efecto glow básico */
+            margin: 30px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            color: #ffffff;
+            box-shadow: 0 0 25px rgba(0, 238, 255, 0.8); /* Aumenta el glow en hover */
+            transform: translateY(-3px);
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #a0a0ff;
+            margin-top: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .coffee-icon {
+            font-size: 20px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                padding: 14px 26px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <!-- Campos ocultos para configurar PayPal -->
+            <input type="hidden" name="cmd" value="_donations" />
+            <input type="hidden" name="business" value="tu-email-paypal@ejemplo.com" /> <!-- Cambia esto por tu correo de PayPal -->
+            <input type="hidden" name="currency_code" value="EUR" />
+            <input type="hidden" name="amount" value="1.25" />
+            <input type="hidden" name="item_name" value="Un café para el equipo" />
+            
+            <!-- Botón personalizado -->
+            <button type="submit" class="btn" id="coffee-btn">
+                <span class="coffee-icon">☕</span>Cómpranos un café (1,25€)
+            </button>
+        </form>
+        <p>Cómpranos un café para poder diseñar la web, somos un equipo de 2 personas, y necesitamos financiación.</p>
+    </div>
+
+    <script>
+        // Script para confirmar la donación
+        document.getElementById('coffee-btn').addEventListener('click', function(e) {
+            // Opcional: puedes añadir una confirmación
+            if(!confirm('¿Quieres donarnos 1,25€ para un café?')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
